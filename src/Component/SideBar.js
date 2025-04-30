@@ -60,7 +60,7 @@ export const SideBar = () => {
   ];
 
   return (
-    <div className="p-5 w-[14rem] h-full fixed top-[5.3rem] left-30 right-30 bg-white z-50 p-2">
+    <div className={`${!isMenuOpen ? 'hidden' : ''} p-5 w-[14rem] h-full fixed top-[5.3rem] left-30 right-30 bg-white z-50 p-2`}>
       <ul>
         {primaryMenu.map((item, i) => (
           <MenuItem key={i} icon={item.icon} text={item.text} to={item.to} />

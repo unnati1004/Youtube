@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { Button } from "./Button";
+import { useSelector } from "react-redux";
 
 const ButtonList = () => {
   const list = [
@@ -10,7 +11,7 @@ const ButtonList = () => {
 
   // Reference to the scrollable container
   const scrollContainerRef = useRef(null);
-
+  const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
   // Function to scroll the container
   const scroll = (direction) => {
     if (scrollContainerRef.current) {
@@ -32,7 +33,7 @@ const ButtonList = () => {
   };
 
   return (
-    <div className="w-[88.5%] flex items-center fixed top-[5.2rem] left-[220px] right-0 bg-white z-10 p-2">
+    <div className={`flex items-center fixed top-[5.2rem] left-[20px] right-0 bg-white z-10 p-2 ${isMenuOpen && 'pl-[220px]'}`}>
       {/* Button to scroll left */}
       <button
         onClick={() => scroll("left")}

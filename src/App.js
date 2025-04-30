@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Body from "./Component/Body";
-import Head from "./Component/Head";
-import { MainContainer } from "./Component/MainContainer";
+import Body from "./pages/Body";
+import Head from "./pages/Head";
+import { MainContainer } from "./pages/MainContainer";
 import { WatchPage } from "./Component/WatchPage";
 import { Demo } from "./Component/Demo";
 import { Demo2 } from "./Component/Demo2";

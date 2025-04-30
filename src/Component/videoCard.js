@@ -4,7 +4,7 @@ export const VideoCard = ({ info, hideDetails = false }) => {
   const { channelTitle, title, thumbnails } = snippet;
 
   return (
-    <div className='p-2 m-2 w-72'>
+    <div className='p-2 m-2 w-100'>
       <img className='rounded-lg' alt="thumbnailImg" src={thumbnails.high.url} />
       <ul>
         {hideDetails && <li className='font-bold'>Sponsored: {channelTitle}</li>}
