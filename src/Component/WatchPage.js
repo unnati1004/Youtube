@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { closeMenu } from "../utils/appSlice";
+import { closeMenu } from "../redux/appSlice";
 import { useParams, useSearchParams } from "react-router-dom";
 import CommentContainer from "./CommentContainer";
 import { LiveChat } from "./LiveChat";
