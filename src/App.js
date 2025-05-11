@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Body from "./pages/Body";
+import { BrowserRouter, createBrowserRouter, Route, RouterProvider, Routes } from "react-router-dom";
 import Head from "./pages/Head";
-import { MainContainer } from "./pages/MainContainer";
-import { WatchPage } from "./Component/WatchPage";
-import { Demo } from "./Component/Demo";
-import { Demo2 } from "./Component/Demo2";
-import { Login } from "./Component/Login";
+import LoadingBar from "react-top-loading-bar";
+import AllCards from "./Component/AllCards";
+import BtnSlider from "./Component/BtnSlider";
+import { Provider } from "react-redux";
+import store from "./utils/store";
+import LeftNav from "./Component/LeftNav";
+import VideoDetails from "./Component/VideoDetails";
+import SearchResult from "./Component/SearchResult";
 
 // const appRouter = createBrowserRouter([
 //   {
@@ -39,13 +41,13 @@ function App() {
 				<div className="flex flex-col h-full">
 					<Head onLoaderFinished={setProgress} />
 					<div className="flex flex-row h-[calc(100%-56px)]">
-						{/* <LeftNav
+						<LeftNav
 							category={selectedCategory}
 							setcategory={setSelectedCategory}
 							onLoaderFinished={setProgress}
-						/> */}
+						/>
 						<div className="grow w-[calc(100%-240px)] h-full overflow-y-auto bg-white">
-							{/* <BtnSlider /> */}
+							<BtnSlider/>
 							<Routes>
 								<Route
 									path="/"

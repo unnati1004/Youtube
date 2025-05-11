@@ -1,31 +1,53 @@
-// VideoCard Component
-export const VideoCard = ({ info, hideDetails = false }) => {
-  const { snippet, statistics } = info;
-  const { channelTitle, title, thumbnails } = snippet;
+import React from "react";
+import { abbreviateNumber } from "js-abbreviation-number";
+import { Link } from "react-router-dom";
+import { BsFillCheckCircleFill } from "react-icons/bs";
+import frenchStrings from "react-timeago/lib/language-strings/en-short";
+import buildFormatter from "react-timeago/lib/formatters/buildFormatter";
 
-  return (
-    <div className='p-2 m-2 w-100'>
-      <img className='rounded-lg' alt="thumbnailImg" src={thumbnails.high.url} />
-      <ul>
-        {hideDetails && <li className='font-bold'>Sponsored: {channelTitle}</li>}
-        {hideDetails && <li className='flex gap-2 m-2'>
-         <button className='w-[180px] bg-blue-100 px-4 py-2 rounded-3xl font-medium ' >Watch</button>  
-         <button className='w-[200px] px-4 py-2 rounded-3xl border border-blue-100 font-medium'>Shop Now</button>  
-        </li>}
-        {!hideDetails && <li className='font-bold'>{title}</li>} {/* Conditionally render title */}
-        {!hideDetails && <li>{channelTitle}</li>}
-        {!hideDetails && <li>{statistics?.viewCount} views</li>} {/* Conditionally render views */}
-      </ul>
-    </div>
-  );
+const VideoCard = ({ video }) => {
+	// Create formatter (English).
+	const formatter = buildFormatter(frenchStrings);
+
+	return (
+		<Link to={`/video/${video?.videoId}`}>
+			<div className="flex flex-col mb-8">
+				<div className="relative h-48 md:h-40 md:rounded-xl overflow-hidden">
+					<img
+						className="h-full w-full object-cover"
+						src={video?.thumbnails[0]?.url}
+					/>
+					{/* {video?.lengthSeconds && <VideoLength time={video?.lengthSeconds} />} */}
+				</div>
+				<div className="flex text-black mt-3">
+					<div className="flex items-start">
+						<div className="flex h-9 w-9 rounded-full overflow-hidden">
+							<img
+								className="h-full w-full object-cover"
+								src={video?.author?.avatar[0]?.url}
+							/>
+						</div>
+					</div>
+					<div className="flex flex-col ml-3 overflow-hidden">
+						<span className="text-sm font-bold line-clamp-2">{video?.title}</span>
+						<span className="text-[12px] font-semibold mt-2 text-black/[0.7] flex items-center">
+							{video?.author?.title}
+							{video?.author?.badges[0]?.type === "VERIFIED_CHANNEL" && (
+								<BsFillCheckCircleFill className="text-black/[0.5] text-[12px] ml-1" />
+							)}
+						</span>
+						<div className="flex text-[12px] font-semibold text-black/[0.7] truncate overflow-hidden">
+							<span>{`${abbreviateNumber(video?.stats?.views, 2)} views`}</span>
+							<span className="flex text-[24px] leading-none font-bold text-black/[0.7] relative top-[-10px] mx-1">
+								.
+							</span>
+							<span className="truncate">{video?.publishedTimeText}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</Link>
+	);
 };
 
-// AdVideoCard Component
-export const AdVideoCard = ({ info }) => {
-  return (
-    <>
-      <VideoCard key={info.id} info={info} hideDetails={true} /> {/* Pass hideDetails prop as true */}
-    </>
-  );
-};
-
+export default VideoCard;

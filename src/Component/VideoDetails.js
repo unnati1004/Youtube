@@ -6,7 +6,7 @@ import { AiOutlineLike } from "react-icons/ai";
 import { abbreviateNumber } from "js-abbreviation-number";
 import { fetchDataFromApi } from "../utils/api";
 import { useDispatch, useSelector } from "react-redux";
-import { closeMenu } from "../redux/apiSlice";
+import { closeMenu } from "../redux/appSlice";
 import SuggestionVideoCard from "./SuggestionVideoCard";
 
 const VideoDetails = () => {
@@ -16,7 +16,7 @@ const VideoDetails = () => {
 	const [relatedVideos, setRelatedVideos] = useState([]);
 	const { id } = useParams();
 	const loading = useSelector((store) => store.app.loading);
-	// console.log(id);
+	console.log(id);
 	useEffect(() => {
 		document.getElementById("root").classList.add("custom-h");
 		fetchVideoDetails();

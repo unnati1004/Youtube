@@ -2,7 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 import { Link } from "react-router-dom";
-import { popular } from "../utils/constants";
+import {popular} from "../utils/constants";
 import { useSelector } from "react-redux";
 
 function SampleNextArrow(props) {
@@ -52,7 +52,7 @@ const BtnSlider = () => {
 	return (
 		<Slider
 			{...settings}
-			className="relative top-0 z-0  whitespace-nowrap flex   whitespace-nowrap flex -row items-center justify-start h-14 px-4 md:px-5 bg-white dark:bg-white"
+			className="relative top-0 z-0 whitespace-nowrap flex whitespace-nowrap flex-row items-center justify-start h-14 px-4 md:px-5 bg-white dark:bg-white"
 		>
 			{popular.map((item, index) => {
 				return (
