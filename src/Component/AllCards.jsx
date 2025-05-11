@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { fetchDataFromApi } from "../utils/api";
-import VideoCard from "./VideoCard";
+import VideoCard from "./videoCard";
 
 const AllCards = ({ onLoaderFinished, category }) => {
 	const loading = useSelector((store) => store.app.loading);
